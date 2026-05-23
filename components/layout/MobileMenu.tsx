@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 export default function MobileMenu({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
   return (
@@ -23,13 +24,13 @@ export default function MobileMenu({ isOpen, onClose }: { isOpen: boolean, onClo
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ delay: 0.3 + i * 0.1, duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
               >
-                <a 
-                  href={`#${item.toLowerCase()}`} 
+                <Link 
+                  href={`/${item.toLowerCase()}`} 
                   onClick={onClose}
                   className="text-5xl md:text-7xl font-serif text-white hover:text-[#D4AF37] transition-colors tracking-widest"
                 >
                   {item}
-                </a>
+                </Link>
               </motion.li>
             ))}
           </ul>

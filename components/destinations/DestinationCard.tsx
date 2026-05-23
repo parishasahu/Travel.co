@@ -2,9 +2,11 @@
 
 import { useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 interface Destination {
+  id: string;
   span: string;
   image: string;
   title: string;
@@ -49,17 +51,18 @@ export default function DestinationCard({ dest }: { dest: Destination }) {
   };
 
   return (
-    <motion.div
-      ref={ref}
-      className={`relative rounded-xl md:rounded-2xl overflow-hidden bg-[#111111] cursor-pointer group ${dest.span} min-h-[400px] md:min-h-0 border border-white/5`}
-      style={{ rotateX, rotateY, transformPerspective: 1200 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-    >
+    <Link href={`/destinations/${dest.id}`} className={`${dest.span} block min-h-[400px] md:min-h-0`}>
+      <motion.div
+        ref={ref}
+        className={`relative rounded-xl md:rounded-2xl overflow-hidden bg-[#111111] cursor-pointer group w-full h-full border border-white/5`}
+        style={{ rotateX, rotateY, transformPerspective: 1200 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -108,5 +111,6 @@ export default function DestinationCard({ dest }: { dest: Destination }) {
         </div>
       </div>
     </motion.div>
+    </Link>
   );
 }

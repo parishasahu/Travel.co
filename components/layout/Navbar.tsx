@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import MobileMenu from './MobileMenu';
 
@@ -25,9 +26,13 @@ export default function Navbar() {
           isScrolled ? "bg-[#0C0C0C]/50 backdrop-blur-md py-4" : "bg-transparent"
         )}
       >
-        <div className="text-white font-serif text-2xl tracking-widest z-50 relative mix-blend-difference cursor-pointer">
+        <Link 
+          href="/"
+          onClick={() => setIsMenuOpen(false)}
+          className="text-white font-serif text-2xl tracking-widest z-50 relative mix-blend-difference cursor-pointer"
+        >
           THE TRAVEL CO.
-        </div>
+        </Link>
 
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
