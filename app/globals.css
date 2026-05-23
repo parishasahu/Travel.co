@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "../styles/typography.css";
+@import "../styles/animations.css";
+@import "../styles/utilities.css";
+
+@theme {
+  --font-serif: var(--font-cormorant), "Playfair Display", serif;
+  --font-sans: var(--font-inter), "Inter", sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+
+  --color-background: #0C0C0C;
+  --color-foreground: #FFFFFF;
+  --color-primary: #D4AF37;
+  --color-accent: #1FB4B4;
+}
+
+@layer base {
+  body {
+    color: var(--color-foreground);
+    background: var(--color-background);
+    overscroll-behavior: none;
+  }
+}

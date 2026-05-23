@@ -1,0 +1,5 @@
+@layer utilities {
+  .glass-panel {
+    @apply bg-[#1A1A1A]/30 border border-white/5 rounded-sm backdrop-blur-md;
+  }
+}
